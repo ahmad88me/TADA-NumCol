@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+import views
 urlpatterns = [
+    url('model_add', views.ModelAdd.as_view()),
+    url('', views.home),
     url(r'^admin/', admin.site.urls),
 ]

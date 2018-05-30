@@ -1,10 +1,9 @@
+import pandas as pd
+import numpy as np
 from SPARQLWrapper import SPARQLWrapper, JSON
 
 # from __init__ import QUERY_LIMIT
-QUERY_LIMIT=""
-
-import pandas as pd
-import numpy as np
+QUERY_LIMIT = ""
 
 
 def run_query_with_datatype(query=None, endpoint=None, datatype=None):

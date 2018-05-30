@@ -1,0 +1,107 @@
+{%extends "base.html"%}
+{%block content%}
+<h3>Adding a new Training Model using A-Box (the data itself)</h3>
+<p>This model will be used to train a model that can be used later on to automatically classify csv files</p><br>
+
+
+{%if error_msg%}
+<div class="alert alert-warning" id="error_msg" role="alert">
+{{error_msg}}
+</div>
+{%endif%}
+{{message}}
+
+
+<form method="POST"> {% csrf_token %}
+    <div class="form-group ">
+        <label for="modelname">Model Name</label>
+        <input type="text" class="form-control " name="name" id="modelname" placeholder="Enter a name for the model"
+               required/>
+    </div>
+    <div class="form-group ">
+        <label for="modelurl">SPARQL Endpoint</label>
+        <input type="text" class="form-control" name="url" id="modelurl"
+               placeholder="Enter the url for the SPARQL Endpoint" value="https://dbpedia.org/sparql" required/>
+    </div>
+    <label>Classes to include in the model: </label><br>
+    <label>You can either choose One by one <span id="num_of_classes"></span></label>
+    <span class="btn-group pull-right" role="group">
+
+            <!--<span class="btn btn-warning" id="fetchclasses-btn"> Fetch all </span>-->
+            <span class="btn btn-danger" id="clearclasses-btn"> Clear all </span>
+            <span class="btn btn-dark" id="addclassuri-btn"> + </span>
+            <span class="btn btn-dark" id="removeclassuri-btn"> - </span>
+        </span>
+    <div class="form-group" id="classruris-div">
+        <!--<input type="text" class="form-control classuri_textfield " name="class_uri"-->
+               <!--placeholder="e.g. http://dbpedia.org/ontology/Person"/>-->
+    </div>
+    <div class="form-group">
+        <label>Or all of them separated by comma</label>
+        <input type="text" class="form-control" name="class_uris" placeholder="enter all classes separated by commas"/>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn form-control btn-dark">Add</button>
+    </div>
+
+</form>
+
+
+<script>
+    $("#addclassuri-btn").click(function() {
+        var single_textfield = '<input type="text" class="form-control classuri_textfield" name="class_uri" placeholder="e.g. http://dbpedia.org/ontology/Person" required/>';
+        $("#classruris-div").append(single_textfield);
+        $("#num_of_classes").html(""+$(".classuri_textfield").length);
+
+        //To activate auto complete for all newly added classes
+        activate_autocomplete()
+    });//click
+
+    $("#removeclassuri-btn").click(function() {
+        if ($(".classuri_textfield").length > 1) {
+            $(".classuri_textfield").last().remove();
+        }
+        $("#num_of_classes").html(""+$(".classuri_textfield").length);
+    });//click
+
+    $("#clearclasses-btn").click(function() {
+        $(".classuri_textfield").remove();
+        $("#addclassuri-btn").click();
+        $("#num_of_classes").html("");
+    });//click
+
+    function activate_autocomplete() {
+        $(function() {
+            $(".classuri_textfield").autocomplete({
+                minLength: 3,
+                source: function(request, response) {
+                    console.log('term: ' + request.term);
+                    //return ["aaa", "bbb", "ccc"];
+                    //response(["aaa", "bbb", "ccc"]);
+                    var query_url = "http://lookup.dbpedia.org/api/search/PrefixSearch?QueryClass=&MaxHits=5&QueryString=" + request.term;
+                    console.log('query: ' + query_url);
+                    $.ajax({
+                        method: "GET",
+                        url: query_url,
+                        dataType: "json",
+                    }).done(function(data) {
+                        if (console && console.log) {
+                            console.log("Sample of data:", data);
+                            var i,data_list=[];
+                            for(i=0;i<data.results.length;i++){
+                                console.log('single: '+data.results[i].uri)
+                            }
+                            response(data.results);
+                        }
+                    });
+
+                } //source
+            });
+        });
+    } //activate_autocomplete
+
+    $("#addclassuri-btn").click();
+
+</script>
+
+{%endblock%}
