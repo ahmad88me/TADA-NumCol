@@ -1,4 +1,4 @@
-from easysparql import *
+from easysparql import run_query
 
 
 def get_numerical_properties_for_url(endpoint, class_uri):
