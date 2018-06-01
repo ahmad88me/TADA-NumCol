@@ -3,6 +3,10 @@ from fuzzycmeans import FCM
 from djangomodels import *
 
 
+def compute_curr_features(col):
+    features_vector = compute_features(col, [mean, std, q1, q3])
+
+
 def compute_features(column, ffuncs):
     feature_vector = []
     for ff in ffuncs:

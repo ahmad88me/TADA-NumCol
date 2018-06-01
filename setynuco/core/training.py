@@ -46,8 +46,9 @@ def compute_features_from_endpoint(model, class_property_uris, min_num_of_object
                     col = remove_outliers(col)
                     if len(col) > min_num_of_objects:
                         logger.debug("success: %s" % (property_uri))
-                        features_vector = features.compute_features(col, [features.mean, features.std, features.q1,
-                                                                          features.q3])
+                        # features_vector = features.compute_features(col, [features.mean, features.std, features.q1,
+                        #                                                   features.q3])
+                        features_vector = features.compute_curr_features(col)
                         cluster_name = "%s %s" % (class_uri, property_uri)
                         logger.debug("cluster: %s" % cluster_name)
                         modeling.add_cluster_to_model(model=model, name=cluster_name, features=features_vector)

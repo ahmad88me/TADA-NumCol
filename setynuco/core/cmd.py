@@ -7,11 +7,13 @@
 import argparse
 import training
 import modeling
+import prediction
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('task', type=str)
     parser.add_argument('--name')
+    parser.add_argument('--id')
     parser.add_argument('--knowledge_graph')
     parser.add_argument('--class_uris', action='append', nargs='*')
     # parser.add_argument('runid', type=int, metavar='Annotation_Run_ID', help='the id of the Annotation Run ')
@@ -21,6 +23,8 @@ if __name__ == '__main__':
     if args.task == 'model_add':
         model = modeling.model_add(name=args.name, knowledge_graph=args.knowledge_graph, class_uris=args.class_uris[0])
         training.train_abox(model=model, min_num_of_objects=30)
+    elif args.task == "predict":
+        prediction.predict(args.id)
     # if args.csvfiles and len(args.csvfiles) > 0:
     #     print 'csvfiles: %s' % args.csvfiles
     #     print "adding dataset"
