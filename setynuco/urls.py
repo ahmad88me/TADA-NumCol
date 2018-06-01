@@ -18,6 +18,7 @@ from django.contrib import admin
 import views
 urlpatterns = [
     url('model_add', views.ModelAdd.as_view()),
-    url('', views.home),
+    url('model_list', views.model_list),
     url(r'^admin/', admin.site.urls),
+    url('', views.home),
 ]

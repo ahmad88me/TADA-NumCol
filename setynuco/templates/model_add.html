@@ -89,9 +89,11 @@
                             console.log("Sample of data:", data);
                             var i,data_list=[];
                             for(i=0;i<data.results.length;i++){
-                                console.log('single: '+data.results[i].uri)
+                                console.log('single: '+data.results[i].uri);
+                                data_list.push(data.results[i].uri);
                             }
-                            response(data.results);
+                            //response(data.results);
+                            response(data_list);
                         }
                     });
 

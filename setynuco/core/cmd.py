@@ -5,7 +5,7 @@
 #                  Command line interface                       #
 #################################################################
 import argparse
-import core
+import training
 import modeling
 
 if __name__ == '__main__':
@@ -19,8 +19,8 @@ if __name__ == '__main__':
     # parser.add_argument('--dotype', action='store_true', help='To conclude the type/class of the given csv file')
     args = parser.parse_args()
     if args.task == 'model_add':
-        model = modeling.model_add(name=args.name, knowledge_graph=args.knowledge_graph, class_uris=args.class_uris)
-        core.explore_and_train_abox(model=model, min_num_of_objects=30)
+        model = modeling.model_add(name=args.name, knowledge_graph=args.knowledge_graph, class_uris=args.class_uris[0])
+        training.train_abox(model=model, min_num_of_objects=30)
     # if args.csvfiles and len(args.csvfiles) > 0:
     #     print 'csvfiles: %s' % args.csvfiles
     #     print "adding dataset"

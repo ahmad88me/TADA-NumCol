@@ -104,58 +104,15 @@ def get_properties_as_list(endpoint=None, class_uri=None, min_count=20):
     return pd.DataFrame(clean_properties)['value']
 
 
-def get_objects(endpoint=None, class_uri=None, property_uri=None, isnumericfilter=True, failbacknofilter=True):
-    class_uri_stripped = class_uri.strip()
-    if class_uri_stripped[0] == "<" and class_uri_stripped[-1] == ">":
-        class_uri_stripped = class_uri_stripped[1:-1]
-    property_uri_stripped = property_uri.strip()
-    if property_uri_stripped[0] == "<" and property_uri_stripped[-1] == ">":
-        property_uri_stripped = property_uri_stripped[1:-1]
-    if isnumericfilter:
-        try:
-            query = """
-                select ?o where{ ?s  a <%s>. ?s <%s> ?o FILTER(isNumeric(?o))} %s
-            """ % (class_uri_stripped, property_uri_stripped, QUERY_LIMIT)
-            objects = run_query(query=query, endpoint=endpoint, raiseexception=True)
-        except Exception as e:
-            if failbacknofilter:
-                print "fail back ... "
-                query = """
-                    select ?o where{ ?s  a <%s>. ?s <%s> ?o} %s
-                """ % (class_uri_stripped, property_uri_stripped, QUERY_LIMIT)
-                objects = run_query(query=query, endpoint=endpoint)
-    else:
-        query = """
-            select ?o where{ ?s  a <%s>. ?s <%s> ?o} %s
-        """ % (class_uri_stripped, property_uri_stripped, QUERY_LIMIT)
-        objects = run_query(query=query, endpoint=endpoint)
+def get_objects(endpoint, class_uri, property_uri):
 
-    return objects
-
-
-def get_objects_as_list(endpoint=None, class_uri=None, property_uri=None, isnumericfilter=True):
-    objects = get_objects(endpoint=endpoint, class_uri=class_uri, property_uri=property_uri,
-                          isnumericfilter=isnumericfilter)
-    clean_objects = [o['o'] for o in objects]
-    if len(clean_objects) == 0:
-        print "no objects found for class %s property %s in endpoint %s" % (class_uri, property_uri, endpoint)
-        col_mat = pd.DataFrame([]).as_matrix()
-        col_mat.shape = (0, 0)
-        return col_mat
-
-    # to get rid of the strings that can not be transformed into numbers
-    col_mat = pd.DataFrame(clean_objects)['value'].apply(pd.to_numeric, errors='coerce').dropna(how='any').as_matrix()
-    col_mat.shape = (col_mat.shape[0], 1)
-    col_mat = col_mat.astype(np.float)
-    # remove nan is any source: http://stackoverflow.com/questions/11620914/removing-nan-values-from-an-array
-    col_mat_num = col_mat[~np.isnan(col_mat)]
-    col_mat_num.shape = (col_mat_num.shape[0], 1)
-    if (col_mat.shape[0] - col_mat_num.shape[0]) < col_mat_num.shape[0]:  # to check how clean is the data
-        return col_mat_num
-    else:
-        a = np.array([])
-        a.shape = (0, 1)
-        return a
+    class_uri_stripped = get_url_stripped(class_uri)
+    property_uri_stripped = get_url_stripped(property_uri)
+    query = """
+        select ?o where{ ?s  a <%s>. ?s <%s> ?o} %s
+    """ % (class_uri_stripped, property_uri_stripped, QUERY_LIMIT)
+    objects = run_query(query=query, endpoint=endpoint)
+    return [o['o']['value'] for o in objects]
 
 
 def get_classes(endpoint=None):
@@ -405,7 +362,7 @@ def get_numerical_properties_for_class_abox(endpoint=None, class_uri=None, raise
     return properties
 
 
-def get_properties_for_class_abox(endpoint=None, class_uri=None, raiseexception=False):
+def get_properties_for_class_abox(endpoint=None, class_uri=None, raiseexception=False, min_num=0):
     """
     a naive approach to get all numerical properties for a given class using the data itself A-BOX
     :param endpoint: endpoint
@@ -427,7 +384,10 @@ def get_properties_for_class_abox(endpoint=None, class_uri=None, raiseexception=
         order by desc(?num)
     """ % class_uri_stripped
     results = run_query(query=query, endpoint=endpoint, raiseexception=raiseexception)
-    properties = [r['p']['value'] for r in results]
+    if min_num == 0:
+        properties = [r['p']['value'] for r in results]
+    else:
+        properties = [r['p']['value'] for r in results if r['num']['value']>= min_num]
     return properties
 
 

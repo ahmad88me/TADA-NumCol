@@ -1,0 +1,50 @@
+{%extends "base.html"%}
+{%block content%}
+<!--<META HTTP-EQUIV="refresh" CONTENT="15">-->
+<h3>List Models</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>knowledge graph</th>
+        <th>created on</th>
+        <th>status</th>
+        <th>notes</th>
+        <th>progress</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {%for model in models %}
+    <tr>
+        <td>{{model.id}}</td>
+        <td>{{model.name}}</td>
+        <td>{{model.knowledge_graph}}</td>
+        <td>{{model.create_on}}</td>
+        <td>{{model.status}}</td>
+        <td>{{model.notes}}</td>
+        <td>
+            <div class="progress">
+                {% if model.progress == 100%}
+                <div class="progress-bar bg-dark-solid"
+                     role="progressbar" style="width: {{model.progress}}%" aria-valuenow="{{model.progress}}"
+                     aria-valuemin="0" aria-valuemax="100">{{model.progress}}%
+                </div>
+                {% else %}
+                <div class="progress-bar bg-dark progress-bar-striped progress-bar-animated active"
+                     role="progressbar" style="width: {{model.progress}}%" aria-valuenow="{{model.progress}}"
+                     aria-valuemin="0" aria-valuemax="100">{{model.progress}}%
+                </div>
+                {%endif%}
+            </div>
+        </td>
+        <td>{{model.notes}}</td>
+        <td>{{model.file_name}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+{%endblock%}

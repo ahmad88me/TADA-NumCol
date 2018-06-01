@@ -1,28 +1,17 @@
 #################################################################
-#           TO make this app compatible with Django             #
-#################################################################
-import os
-import sys
-
-proj_path = (os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
-venv_python = os.path.join(proj_path, '.venv', 'bin', 'python')
-# This is so Django knows where to find stuff.
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "setynuco.settings")
-sys.path.append(proj_path)
-
-# This is so my local_settings.py gets loaded.
-os.chdir(proj_path)
-
-# This is so models get loaded.
-from django.core.wsgi import get_wsgi_application
-
-application = get_wsgi_application()
-
-#################################################################
 #                        Modeling                               #
 #################################################################
-
+from djangomodels import *
 from setynuco.models import *
+
+import logging
+
+logger = logging.getLogger(__name__)
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.DEBUG)
 
 
 def model_add(name, knowledge_graph, class_uris):
@@ -30,9 +19,15 @@ def model_add(name, knowledge_graph, class_uris):
     mlmodel.name = name
     mlmodel.knowledge_graph = knowledge_graph
     mlmodel.save()
+    logger.info(class_uris)
     for curi in class_uris:
+        logger.debug("will add <%s>" % curi)
         ModelClass(model=mlmodel, class_uri=curi).save()
     return mlmodel
+
+
+def add_cluster_to_model(model, name, features):
+    Cluster(model=model, name=name, center=",".join(str(f) for f in features)).save()
 
 
 def update_model_progress_for_partial(model, new_progress):
@@ -41,7 +36,7 @@ def update_model_progress_for_partial(model, new_progress):
 
 def update_model_state(model, new_state=None, new_notes=None, new_progress=None):
     if new_state is not None:
-        model.state = new_state
+        model.status = new_state
     if new_notes is not None:
         model.notes = new_notes
     if new_progress is not None:

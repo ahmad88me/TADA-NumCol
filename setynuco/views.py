@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from subprocess import Popen
+import os
+from models import MLModel
 
 
 class ModelAdd(TemplateView):
@@ -15,32 +18,18 @@ class ModelAdd(TemplateView):
             error_msg = 'There should be at least one class uri'
         if error_msg != '':
             return render(request, self.template_name, {'error_msg': error_msg})
+        name = request.POST['name']
+        knowledgegraph = request.POST['url']
+        classes_str = " ".join(request.POST.getlist('class_uri'))
+        from core.djangomodels import venv_python, proj_path
+        comm = "%s %s model_add --name \"%s\" --knowledge_graph \"%s\" --class_uris %s" % (venv_python,os.path.join(proj_path, 'core', 'cmd.py'), name, knowledgegraph, classes_str)
+        print(comm)
+        Popen(comm, shell=True)
+        return redirect('/model_list')
 
 
-            #
-            #
-            # mlmodel = MLModel()
-            # mlmodel.name = clean_string(request.POST['name'])
-            # if mlmodel.name.strip() == '':
-            #     mlmodel.name = random_string(length=6)
-            # mlmodel.url = request.POST['url']
-            #
-            #
-            # mlmodel.save()
-            # if request.POST['class_uris'].strip() == "":
-            #     class_uris = request.POST.getlist('class_uri')
-            # else:
-            #     class_uris = []
-            #     for cu in request.POST['class_uris'].split(','):
-            #         class_uris.append(cu.strip())
-            # core.explore_and_train_abox(endpoint=mlmodel.url, model_id=mlmodel.id, min_num_of_objects=30,
-            #                             classes_uris=class_uris)
-
-
-
-    return redirect('list_models')
-
-
+def model_list(request):
+    return render(request, 'model_list.html', {'models': MLModel.objects.all()})
 
 
 def home(request):
