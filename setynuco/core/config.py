@@ -1,2 +1,2 @@
-min_num_of_entities_per_property = 15
-min_num_of_objects = 10
+min_num_of_entities_per_property = 20
+min_num_of_objects = 20
