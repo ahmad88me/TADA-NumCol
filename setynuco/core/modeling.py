@@ -3,7 +3,7 @@
 #################################################################
 from djangomodels import *
 from setynuco.models import *
-
+import util
 import logging
 
 logger = logging.getLogger(__name__)
@@ -27,7 +27,7 @@ def model_add(name, knowledge_graph, class_uris):
 
 
 def add_cluster_to_model(model, name, features):
-    Cluster(model=model, name=name, center=",".join(str(f) for f in features)).save()
+    Cluster(model=model, name=name, center=",".join(str(util.round_acc(f)) for f in features)).save()
 
 
 def update_model_progress_for_partial(model, new_progress):

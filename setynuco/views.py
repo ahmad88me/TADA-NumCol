@@ -41,6 +41,9 @@ def model_list(request):
 class PredictionAdd(TemplateView):
     template_name = 'prediction_add.html'
 
+    def get(self, request):
+        return render(request, self.template_name, {'models': MLModel.objects.all()})
+
     def post(self, request):
         name = request.POST['name']
         model_id = request.POST['model_id']
@@ -51,9 +54,10 @@ class PredictionAdd(TemplateView):
         model = models[0]
         input_file = request.FILES['csvfile']
         dest_file_name = name + ' - ' + random_string(length=4) + '.csv'
+        dest_file_dir = os.path.join(settings.UPLOAD_DIR, dest_file_name)
         if handle_uploaded_file(uploaded_file=input_file,
-                                destination_file=os.path.join(settings.UPLOAD_DIR, dest_file_name)):
-            pr = PredictionRun(name=name, model=model, created_on=datetime.now(), input_file=input_file)
+                                destination_file=dest_file_dir):
+            pr = PredictionRun(name=name, model=model, created_on=datetime.now(), input_file=dest_file_dir)
             pr.save()
             from core.djangomodels import venv_python, proj_path
             comm = "%s %s predict --id %d" % (venv_python, os.path.join(proj_path, 'core', 'cmd.py'), pr.id)
@@ -66,12 +70,16 @@ class PredictionAdd(TemplateView):
                                                                  ' make sure they are text csv files'})
 
 
+def prediction_list(request):
+    return render(request, 'prediction_list.html', {'predictions': PredictionRun.objects.all()})
+
+
 def handle_uploaded_file(uploaded_file=None, destination_file=None):
     if uploaded_file is None:
         print "handle_uploaded_file> uploaded_file should not be None"
         return False
     if destination_file is None:
-        print "handle_uploaded_file> destinatino_file should not be None"
+        print "handle_uploaded_file> destination_file should not be None"
         return False
     f = uploaded_file
     with open(destination_file, 'wb+') as destination:

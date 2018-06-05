@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+{%block content%}
+<!--<META HTTP-EQUIV="refresh" CONTENT="15">-->
+<h3>List Predictions</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>model</th>
+        <th>created on</th>
+        <th>finished on</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for prediction in predictions %}
+    <tr>
+        <td>{{prediction.id}}</td>
+        <td>{{prediction.name}}</td>
+        <td>{{prediction.model.name}}</td>
+        <td>{{prediction.create_on}}</td>
+        <td>{{prediction.finished_on}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+{%endblock%}

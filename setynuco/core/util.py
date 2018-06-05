@@ -1,4 +1,9 @@
 import features
+import numpy as np
+
+
+def round_acc(x):
+    return round(x, 2)
 
 
 def strip_uri(uri):
@@ -33,7 +38,8 @@ def get_numericals(column):
     clean_column = []
     for c in column:
         if isinstance(c, (int, float)):
-            clean_column.append(c)
+            if not np.isnan(c):
+                clean_column.append(c)
         elif isinstance(c, basestring):
             if c.isdigit():
                 clean_column.append(float(c))

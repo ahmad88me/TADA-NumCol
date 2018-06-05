@@ -19,6 +19,8 @@ import views
 urlpatterns = [
     url('model_add', views.ModelAdd.as_view()),
     url('model_list', views.model_list),
+    url('prediction_add', views.PredictionAdd.as_view()),
+    url('prediction_list', views.prediction_list),
     # url('draw_model', views.draw_model),
     url(r'^admin/', admin.site.urls),
     url('', views.home),

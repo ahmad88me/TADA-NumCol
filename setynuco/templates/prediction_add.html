@@ -1,0 +1,56 @@
+{%extends "base.html"%}
+{%block content%}
+<h3>Predict a column using a trained model</h3>
+<p>This prediction will classify a given CSV file</p><br>
+
+{%if error_msg%}
+<div class="alert alert-warning" id="error_msg" role="alert">
+{{error_msg}}
+</div>
+{%endif%}
+{{message}}
+
+
+<br>
+<form id="predictform" enctype="multipart/form-data" method="POST"> {%csrf_token%}
+    <div class="form-group">
+        <label for="prediction_name">Prediction Name</label>
+        <input type="text" id="prediction_name" name="name" class="form-control"
+               placeholder="Enter a name for your prediction"/>
+    </div>
+    <div class="form-group">
+        <label for="sel1">Select Model to be used to predict your input:</label>
+        <select class="form-control" id="sel1" name="model_id" form="predictform">
+            {%for m in models%}
+            <option value="{{m.id}}">{{m.name}}</option>
+            {%endfor%}
+        </select>
+    </div>
+<!--<div class="checkbox">-->
+        <!--<label class="">-->
+      <!--<input type="checkbox" name="hasheader" > Has headers-->
+        <!--</label></div>-->
+
+    <div class="form-group">
+        <!--<input type="file" name="csvfiles" multiple>-->
+        <span class="btn btn-dark btn-file form-control">Upload CSV Files <input type="file" name="csvfile">
+</span>
+
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn form-control btn-dark">Predict</button>
+    </div>
+</form>
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
