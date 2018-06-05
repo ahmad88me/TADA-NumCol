@@ -27,7 +27,7 @@ def remove_outliers(column):
     for c in column:
         if c >= lower_bound and c <= upper_bound:
             clean_column.append(c)
-    return column
+    return clean_column
 
 
 def get_numericals(column):
