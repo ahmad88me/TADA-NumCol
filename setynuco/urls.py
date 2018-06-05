@@ -21,6 +21,7 @@ urlpatterns = [
     url('model_list', views.model_list),
     url('prediction_add', views.PredictionAdd.as_view()),
     url('prediction_list', views.prediction_list),
+    url('clusters_for_prediction', views.clusters_for_prediction),
     # url('draw_model', views.draw_model),
     url(r'^admin/', admin.site.urls),
     url('', views.home),

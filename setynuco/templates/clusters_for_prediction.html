@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{%block content%}
+<!--<META HTTP-EQUIV="refresh" CONTENT="15">-->
+<h3>Prediction clusters for:{{prediction_run.id}} {{prediction_run.name}}</h3>
+
+{%for col_pred in column_predictions %}
+
+<h4>for column {{col_pred.column_no}}</h4>
+{{col_pred.features}}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>cluster</th>
+        <th>value</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for mem in col_pred.ccmembership_set.all %}
+    <tr>
+        <td>{{mem.cluster.name}}</td>
+        <td>{{mem.membership}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+{%endfor%}
+
+{%endblock%}
+

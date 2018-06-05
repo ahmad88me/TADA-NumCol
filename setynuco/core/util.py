@@ -41,6 +41,38 @@ def get_numericals(column):
             if not np.isnan(c):
                 clean_column.append(c)
         elif isinstance(c, basestring):
-            if c.isdigit():
-                clean_column.append(float(c))
+            if '.' in c or c.isdigit():
+                try:
+                    clean_column.append(float(c))
+                except Exception as e:
+                    pass
     return clean_column
+
+
+# The below code is used to test the performance of get_numericals function
+# import timeit
+#
+# statements=["""\
+# try:
+#     b = float(a)
+# except Exception as e:
+#     pass""",
+# # """\
+# # if '.' in a:
+# #     l = a.split('.')
+# #     if len(l) == 2:
+# #         if l[0].isdigit() and l[1].isdigit():
+# #             b = float(a)""",
+# """\
+# if '.' in a or a.isdigit():
+#     try:
+#         b = float(a)
+#     except Exception as e:
+#          pass"""]
+#
+# for a in ("11", "12.5", "abc", "a.3"):
+#     for s in statements:
+#         # t = timeit.Timer(stmt=s, setup='a={}'.format(a))
+#         t = timeit.Timer(stmt=s, setup='a="%s"' % str(a))
+#         print("a = {}\n{}".format(a,s))
+#         print("%.2f usec/pass\n" % (1000000 * t.timeit(number=100000)/100000))

@@ -63,7 +63,7 @@ class PredictionAdd(TemplateView):
             comm = "%s %s predict --id %d" % (venv_python, os.path.join(proj_path, 'core', 'cmd.py'), pr.id)
             print(comm)
             Popen(comm, shell=True)
-            return redirect('/model_list')
+            return redirect('/prediction_list')
         else:
             return render(request, self.template_name, {'models': MLModel.objects.filter(state=MLModel.COMPLETE),
                                                     'error_msg': 'we could not handle any of the files,' +
@@ -72,6 +72,13 @@ class PredictionAdd(TemplateView):
 
 def prediction_list(request):
     return render(request, 'prediction_list.html', {'predictions': PredictionRun.objects.all()})
+
+
+def clusters_for_prediction(request):
+    prediction_id = request.GET['id']
+    prediction_run = PredictionRun.objects.get(id=prediction_id)
+    return render(request, 'clusters_for_prediction.html',
+                   {'column_predictions': prediction_run.columnprediction_set.all(), 'prediction_run': prediction_run})
 
 
 def handle_uploaded_file(uploaded_file=None, destination_file=None):

@@ -22,7 +22,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.task == 'model_add':
         model = modeling.model_add(name=args.name, knowledge_graph=args.knowledge_graph, class_uris=args.class_uris[0])
-        training.train_abox(model=model, min_num_of_objects=30)
+        training.train_abox(model=model)
     elif args.task == "predict":
         prediction.predict(args.id)
     # if args.csvfiles and len(args.csvfiles) > 0:

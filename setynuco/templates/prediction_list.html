@@ -11,6 +11,7 @@
         <th>model</th>
         <th>created on</th>
         <th>finished on</th>
+        <th>see membership</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
         <td>{{prediction.model.name}}</td>
         <td>{{prediction.create_on}}</td>
         <td>{{prediction.finished_on}}</td>
+        <td><a href="clusters_for_prediction?id={{prediction.id}}"> see prediction</a></td>
     </tr>
     {%endfor%}
     </tbody>

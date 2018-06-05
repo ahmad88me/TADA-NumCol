@@ -20,7 +20,7 @@ class MLModel(models.Model):
 class Cluster(models.Model):
     model = models.ForeignKey(MLModel, on_delete=models.CASCADE)
     name = models.CharField(max_length=120)
-    center = models.TextField()  # space separated n-dimensions
+    center = models.TextField()  # comma separated n-dimensions
 
     def __str__(self):
         return unicode(self).encode('utf-8')
@@ -57,6 +57,7 @@ class PredictionRun(models.Model):
 class ColumnPrediction(models.Model):
     prediction_run = models.ForeignKey(PredictionRun, on_delete=models.CASCADE)
     column_no = models.PositiveIntegerField()
+    features = models.TextField()  # comma separated n-dimensions
 
     def __str__(self):
         return unicode(self).encode('utf-8')

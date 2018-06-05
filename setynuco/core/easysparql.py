@@ -63,47 +63,6 @@ def run_query(query=None, endpoint=None, raiseexception=False):
         return []
 
 
-def get_properties(endpoint=None, class_uri=None, min_count=20):
-    """
-    :param endpoint: the meta endpoint
-    :param class_uri: with or without < and >
-    :param min_count:
-    :return: returns the properties and can be accessed as follows: properties[idx]['property']['value']
-    """
-    class_uri_stripped = get_url_stripped(class_uri)
-
-    query = """
-    prefix loupe: <http://ont-loupe.linkeddata.es/def/core/>
-        prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-        select distinct ?p as ?property ?count where {
-          graph <http://data.loupe.linked.es/dbpedia/1> {
-            ?pp loupe:aboutClass <%s>;
-                loupe:aboutProperty ?p;
-                loupe:hasDatatypePartition ?pdp;
-                loupe:objectCount ?count .
-            {
-            ?pdp loupe:datatype xsd:double .
-            } UNION {
-            ?pdp loupe:datatype xsd:integer .
-            } UNION {
-            ?pdp loupe:datatype xsd:decimal .
-            }
-           FILTER(?count > %d)
-         }
-        }
-        ORDER BY desc(?count)
-        %s
-    """ % (class_uri_stripped, min_count, QUERY_LIMIT)
-    properties = run_query(query=query, endpoint=endpoint)
-    return properties
-
-
-def get_properties_as_list(endpoint=None, class_uri=None, min_count=20):
-    properties = get_properties(endpoint=endpoint, class_uri=class_uri, min_count=min_count)
-    clean_properties = [p['property'] for p in properties]
-    return pd.DataFrame(clean_properties)['value']
-
-
 def get_objects(endpoint, class_uri, property_uri):
 
     class_uri_stripped = get_url_stripped(class_uri)

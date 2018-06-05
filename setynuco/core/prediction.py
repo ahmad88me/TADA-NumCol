@@ -85,7 +85,8 @@ def predict(prediction_run_id):
             logger.debug(membership_vector)
             max_num_of_prediction_memberships = 10
             small_value = np.amin(membership_vector) - 1  # could be subtracted from any value
-            column_prediction = ColumnPrediction(column_no=new_old_idx_matching[i], prediction_run=prediction_run)
+            col_fea_str = ",".join([str(util.round_acc(v)) for v in col_fea[0]])
+            column_prediction = ColumnPrediction(column_no=new_old_idx_matching[i], prediction_run=prediction_run, features=col_fea_str)
             column_prediction.save()
             for k in range(max_num_of_prediction_memberships):
                 # here I have to save the cluster ... to be continue
