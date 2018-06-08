@@ -36,7 +36,7 @@ def compute_features_from_endpoint(model, class_property_uris, min_num_of_object
     for class_uri in class_property_uris.keys():
         logger.info("\nproperties for %s are %d" % (class_uri, len(class_property_uris[class_uri])))
         for property_uri in class_property_uris[class_uri]:
-            # logger.debug("getting objects for: %s"%property_uri)
+            logger.debug("getting objects for: %s"%property_uri)
             raw_col = easysparql.get_objects(endpoint=model.knowledge_graph, class_uri=class_uri,
                                              property_uri=property_uri)
 
@@ -57,6 +57,7 @@ def compute_features_from_endpoint(model, class_property_uris, min_num_of_object
                 else:
                     logger.debug("%s only has %d/%d numerical values" % (property_uri, len(raw_col), len(col)))
             update_func(int(idx * 1.0 / total_num_of_queries * 100))
+            idx += 1
 
 
 def get_models_properties(model, update_progress_func):

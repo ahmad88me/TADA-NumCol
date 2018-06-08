@@ -43,6 +43,7 @@ def load_mlmodel_into_fcm(model):
     num_of_cols = len(model.cluster_set.all())
     centers = []
     for clus_model in model.cluster_set.all():
+        logger.debug("load_mlmodel_into_fcm> getting clus %s" % clus_model.name)
         p = clus_model.center.split(',')
         centers.append(p)
     centers_np = np.array(centers, dtype='f')
@@ -51,6 +52,7 @@ def load_mlmodel_into_fcm(model):
     fcm = FCM(n_clusters=num_of_cols)
     fcm.cluster_centers_ = centers_np
     data = centers_np
+    logger.debug("load_mlmodel_into_fcm> will fit the data with %d clusters" % num_of_cols)
     fcm.fit(data, range(num_of_cols))
     logger.info("generated the FCM model from the MLModel")
     return fcm
@@ -63,9 +65,11 @@ def predict(prediction_run_id):
     # chardet.detect(f.read())
     # raw_data = np.loadtxt(file_dir, delimiter=',', skiprows=1)
     raw_data = np.genfromtxt(file_dir, delimiter=',', skip_header=1, invalid_raise=False)  # invalid_raise to skip rows with excessive number of files
+    logger.debug("asking for numerical columns")
     data, new_old_idx_matching = get_numerical_columns(raw_data)
     num_of_cols = len(data[0])
     if num_of_cols > 0:
+        logger.debug("will load the MLModel")
         fcm = load_mlmodel_into_fcm(prediction_run.model)
 
         for i in range(num_of_cols):
@@ -109,17 +113,36 @@ def predict(prediction_run_id):
                 center_str = ",".join(str(util.round_acc(c)) for c in clus_center)
                 matching_clusters = prediction_run.model.cluster_set.filter(center=center_str)
                 if len(matching_clusters) == 0:
-                    logger.error("fcm centers: ")
-                    logger.error(fcm.cluster_centers_)
-                    logger.error("clusters: ")
-                    logger.error([c.center for c in prediction_run.model.cluster_set.all()])
-                    raise Exception("could not find a matching center")
+                    # logger.error("fcm centers: ")
+                    # logger.error(fcm.cluster_centers_)
+                    logger.warning("clusters: ")
+                    logger.warning([c.center for c in prediction_run.model.cluster_set.all()])
+                    logger.warning("was looking for the center: ")
+                    logger.warning(center_str)
+                    #raise Exception("could not find a matching center")
+                    logger.warning("could not find a matching center, hence will find the closet cluster")
+
+                    min_diff = 100
+                    matching_clus_model = None
+                    for clus_model in prediction_run.model.cluster_set.all():
+                        local_diff = np.linalg.norm(np.array(clus_model.center.split(','), dtype='f') - clus_center)
+                        if local_diff < min_diff:
+                            matching_clus_model = clus_model
+                    if matching_clus_model is None:
+                        logger.error("could not find a close match to the cluster")
+                        raise Exception("could not find a close match to the cluster")
+                    logger.debug("matching clus: ")
+                    logger.debug(matching_clus_model.center)
+                    matching_clusters = [matching_clus_model]
+
                 membership_model = CCMembership(column_prediction=column_prediction, membership=membership_vector[max_idx], cluster=matching_clusters[0])
                 membership_model.save()
                 membership_vector[max_idx] = small_value
         prediction_run.finished_on = datetime.now()
         prediction_run.save()
 
+    else:
+        logger.warning("There are zero numerical columns, hence Done.")
 
 
 

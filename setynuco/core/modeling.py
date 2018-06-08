@@ -5,6 +5,8 @@ from djangomodels import *
 from setynuco.models import *
 import util
 import logging
+import numpy as np
+
 
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()
@@ -45,4 +47,21 @@ def update_model_state(model, new_state=None, new_notes=None, new_progress=None)
     return model
 
 
-
+def merge_clusters(model):
+    properties = []
+    for clus in model.cluster_set.all():
+        class_name, property_name = clus.name.split(' ')
+        properties.append(property_name)
+    properties = list(set(properties))
+    for property in properties:
+        clusters_models = model.cluster_set.filter(name__endswith=property)
+        clusters = [np.array(util.get_numericals(clus_model.center.split(','))) for clus_model in clusters_models]
+        clusters_np = np.array(clusters)
+        print "clusters np:"
+        print clusters_np
+        clus_avg = np.average(clusters_np, axis=0)
+        clus_avg_str = ",".join(str(util.round_acc(x)) for x in clus_avg)
+        new_clus = Cluster(name=property, center=clus_avg_str, model=model)
+        new_clus.save()
+        for clus_model in clusters_models:
+            clus_model.delete()
