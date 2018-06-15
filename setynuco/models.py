@@ -46,6 +46,17 @@ class PredictionRun(models.Model):
     created_on = models.DateTimeField(default=datetime.now())
     finished_on = models.DateTimeField(default=datetime.now())
     input_file = models.FileField()
+    STATUS_STOPPED = 'stopped'
+    STATUS_RUNNING = 'running'
+    STATUS_NOTSTARTED = 'not started yet'
+    STATUS_FINISHED = 'finished'
+    STATUSES = (
+        (STATUS_STOPPED, STATUS_STOPPED),
+        (STATUS_RUNNING, STATUS_RUNNING),
+        (STATUS_NOTSTARTED, STATUS_NOTSTARTED),
+        (STATUS_FINISHED, STATUS_FINISHED)
+    )
+    status = models.CharField(choices=STATUSES, default=STATUS_NOTSTARTED, max_length=20)
 
     def __str__(self):
         return unicode(self).encode('utf-8')

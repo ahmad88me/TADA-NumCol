@@ -6,23 +6,31 @@
 <table class="table table-striped">
     <thead>
     <tr>
+        <th>#</th>
         <th>id</th>
         <th>name</th>
         <th>model</th>
         <th>created on</th>
         <th>finished on</th>
+        <th>status</th>
         <th>see membership</th>
     </tr>
     </thead>
     <tbody>
     {%for prediction in predictions %}
-    <tr>
+    <tr >
+        <td>{{ forloop.counter }}</td>
         <td>{{prediction.id}}</td>
         <td>{{prediction.name}}</td>
         <td>{{prediction.model.name}}</td>
-        <td>{{prediction.create_on}}</td>
+        <td>{{prediction.created_on}}</td>
         <td>{{prediction.finished_on}}</td>
-        <td><a href="clusters_for_prediction?id={{prediction.id}}"> see prediction</a></td>
+        <td>{{prediction.status}}</td>
+        {% if prediction.columnprediction_set.all %}
+                <td class="btn-warning" ><a href="clusters_for_prediction?id={{prediction.id}}">see prediction</a></td>
+        {%else%}
+                <td ><a href="clusters_for_prediction?id={{prediction.id}}">see prediction</a></td>
+        {%endif%}
     </tr>
     {%endfor%}
     </tbody>

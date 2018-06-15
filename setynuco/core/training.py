@@ -7,13 +7,14 @@ import features
 import traceback
 from util import get_numericals, remove_outliers
 import logging
-
-logger = logging.getLogger(__name__)
-handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(logging.StreamHandler())
-logger.setLevel(logging.DEBUG)
+from logger import set_config
+# logger = logging.getLogger(__name__)
+# handler = logging.FileHandler('core.log')
+# formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+# handler.setFormatter(formatter)
+# logger.addHandler(handler)
+# logger.setLevel(logging.DEBUG)
+logger = set_config(logging.getLogger(__name__))
 
 
 def compute_features_from_endpoint(model, class_property_uris, min_num_of_objects, update_func):

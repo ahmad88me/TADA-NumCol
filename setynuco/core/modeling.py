@@ -7,13 +7,18 @@ import util
 import logging
 import numpy as np
 
+from logger import set_config
 
-logger = logging.getLogger(__name__)
-handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(logging.StreamHandler())
-logger.setLevel(logging.DEBUG)
+
+logger = set_config(logging.getLogger(__name__))
+
+#
+# logger = logging.getLogger(__name__)
+# handler = logging.FileHandler('core.log')
+# formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+# handler.setFormatter(formatter)
+# logger.addHandler(handler)
+# logger.setLevel(logging.DEBUG)
 
 
 def model_add(name, knowledge_graph, class_uris):

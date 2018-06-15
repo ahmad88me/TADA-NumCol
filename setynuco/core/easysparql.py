@@ -333,19 +333,30 @@ def get_properties_for_class_abox(endpoint=None, class_uri=None, raiseexception=
         print "get_numerical_properties_for_class_abox> class_uri should not be None"
         return []
     class_uri_stripped = get_url_stripped(class_uri)
-    query = """
-        SELECT ?p (count(distinct ?s) as ?num)
-        WHERE {
-            ?s a <%s>.
-            ?s ?p []
-        }
-        group by ?p
-        order by desc(?num)
-    """ % class_uri_stripped
-    results = run_query(query=query, endpoint=endpoint, raiseexception=raiseexception)
     if min_num == 0:
+        query = """
+            SELECT ?p (count(distinct ?s) as ?num)
+            WHERE {
+                ?s a <%s>.
+                ?s ?p []
+            }
+            group by ?p
+            order by desc(?num)
+        """ % class_uri_stripped
+        results = run_query(query=query, endpoint=endpoint, raiseexception=raiseexception)
         properties = [r['p']['value'] for r in results]
     else:
+        query = """
+            SELECT ?p (count(distinct ?s) as ?num)
+            WHERE {
+                ?s a <%s>.
+                ?s ?p []
+            }
+            group by ?p
+            having (count(?s) > %d)
+            order by desc(?num)
+        """ % (class_uri_stripped, min_num)
+        results = run_query(query=query, endpoint=endpoint, raiseexception=raiseexception)
         properties = [r['p']['value'] for r in results if r['num']['value']>= min_num]
     return properties
 

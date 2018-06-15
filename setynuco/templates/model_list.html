@@ -6,6 +6,7 @@
 <table class="table table-striped">
     <thead>
     <tr>
+        <th>#</th>
         <th>id</th>
         <th>name</th>
         <th>knowledge graph</th>
@@ -20,6 +21,7 @@
     <tbody>
     {%for model in models %}
     <tr>
+        <td>{{ forloop.counter }}</td>
         <td>{{model.id}}</td>
         <td>{{model.name}}</td>
         <td>{{model.knowledge_graph}}</td>

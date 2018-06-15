@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-UPLOAD_DIR = os.path.join(BASE_DIR, 'local_uploads')
+UPLOAD_DIR = os.path.join(BASE_DIR, 'web_commons','data')
 
 print("upload dir")
 print(UPLOAD_DIR)
