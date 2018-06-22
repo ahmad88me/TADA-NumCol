@@ -45,7 +45,7 @@ def run_query(query=None, endpoint=None, raiseexception=False):
     sparql.setQuery(query=query)
     sparql.setMethod("POST")
     sparql.setReturnFormat(JSON)
-    #sparql.setTimeout(300)
+    # sparql.setTimeout(1000)
     try:
         results = sparql.query().convert()
         if len(results["results"]["bindings"]) > 0:
@@ -334,30 +334,56 @@ def get_properties_for_class_abox(endpoint=None, class_uri=None, raiseexception=
         return []
     class_uri_stripped = get_url_stripped(class_uri)
     if min_num == 0:
+        # query = """
+        #     SELECT ?p (count(distinct ?s) as ?num)
+        #     WHERE {
+        #         ?s a <%s>.
+        #         ?s ?p []
+        #     }
+        #     group by ?p
+        #     order by desc(?num)
+        # """ % class_uri_stripped
         query = """
-            SELECT ?p (count(distinct ?s) as ?num)
-            WHERE {
-                ?s a <%s>.
-                ?s ?p []
-            }
-            group by ?p
-            order by desc(?num)
-        """ % class_uri_stripped
+                    SELECT ?p (count(distinct ?s) as ?num)
+                    WHERE {
+                        ?s a <%s>.
+                        ?s ?p[]
+                    }
+                    group by ?p
+                    order by desc(?num)
+                """ % class_uri_stripped
         results = run_query(query=query, endpoint=endpoint, raiseexception=raiseexception)
         properties = [r['p']['value'] for r in results]
     else:
+        # query = """
+        #     SELECT ?p (count(distinct ?s) as ?num)
+        #     WHERE {
+        #         ?s a <%s>.
+        #         ?s ?p []
+        #     }
+        #     group by ?p
+        #     having (count(?s) > %d)
+        #     order by desc(?num)
+        # """ % (class_uri_stripped, min_num)
         query = """
-            SELECT ?p (count(distinct ?s) as ?num)
+            SELECT ?p count(distinct ?s) as ?num
             WHERE {
                 ?s a <%s>.
-                ?s ?p []
+                ?s ?p[]
             }
             group by ?p
-            having (count(?s) > %d)
-            order by desc(?num)
-        """ % (class_uri_stripped, min_num)
+        """ % (class_uri_stripped)
+        # query = """
+        #             SELECT ?p (count(distinct ?s) as ?num)
+        #             WHERE {
+        #                 ?s a <%s>.
+        #                 ?s ?p []
+        #             }
+        #             group by ?p
+        #         """ % class_uri_stripped
         results = run_query(query=query, endpoint=endpoint, raiseexception=raiseexception)
-        properties = [r['p']['value'] for r in results if r['num']['value']>= min_num]
+        # properties = [r['p']['value'] for r in results if r['num']['value'] >= min_num]
+        properties = [r['p']['value'] for r in results]
     return properties
 
 

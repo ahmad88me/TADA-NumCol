@@ -1,3 +1,6 @@
+
+web_commons/data/*
+
 db.sqlite3*
 
 .DS_Store

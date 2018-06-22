@@ -1,8 +1,8 @@
 {%extends "base.html"%}
 {%block content%}
 <!--<META HTTP-EQUIV="refresh" CONTENT="15">-->
-<h3>List Predictions</h3>
-
+<h3>List Predictions ({{predictions | length}})</h3>
+<a href="prediction_list?annotation_only">Annotated only</a>
 <table class="table table-striped">
     <thead>
     <tr>

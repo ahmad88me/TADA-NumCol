@@ -7,6 +7,8 @@ import csv
 from subprocess import call
 from datetime import datetime
 import logging
+import numpy as np
+import pandas as pd
 from django.core.files import File
 
 BASE_DIR = settings.BASE_DIR
@@ -86,8 +88,8 @@ def predict(prediction_name, model_name):
         logger.error("predict> pr %s not found" % prediction_name)
         return
     pr = prs[0]
-    # if pr.status == PredictionRun.STATUS_NOTSTARTED:
-    if pr.status == PredictionRun.STATUS_RUNNING:
+    if pr.status == PredictionRun.STATUS_NOTSTARTED:
+    #if pr.status == PredictionRun.STATUS_RUNNING:
         from setynuco.core.djangomodels import venv_python, proj_path
         comm = "%s %s predict --id %d" % (venv_python, os.path.join(proj_path, 'core', 'cmd.py'), pr.id)
         logger.debug(comm)
@@ -132,5 +134,44 @@ def run_experiment():
         predict(prediction_name=high_level_concept + " prediction " + file_name_with_ext, model_name=high_level_concept)
 
 
+def show_stats():
+    from setynuco.models import *
+    import json
+    from prediction import get_numerical_columns
+    data_dir = os.path.join(BASE_DIR, "web_commons", "data")
+    f = open(os.path.join(BASE_DIR, "web_commons", "web_commons_classes.csv"))
+    reader = csv.reader(f, delimiter=',', quotechar='"')
+    stats = {
+        'num_of_concepts': len(MLModel.objects.all()),
+        'num_of_numerical_columns': 0,
+        'num_of_numerical_files': 0,
+        'total_num_of_vals_in_numerical_columns': 0
+    }
+    for row in reader:
+        file_name_with_ext, high_level_concept, concept_uri = row
+        file_name = file_name_with_ext + ".csv"
+        file_dir = os.path.join(data_dir, file_name)
+        # raw_data = np.genfromtxt(file_dir, delimiter=',', skip_header=1,
+        #                          invalid_raise=False)  # invalid_raise to skip rows with excessive number of files
+        raw_data = pd.read_csv(file_dir).values
+        logger.debug("show_stats> asking for numerical columns")
+        data_list_of_cols, new_old_idx_matching = get_numerical_columns(raw_data)
+        if len(data_list_of_cols) == 0:
+            logger.debug("show_stats> no numerical data is found")
+            continue
+        num_of_cols = len(data_list_of_cols)
+        if num_of_cols > 0:
+            logger.debug("show_stats> number of numerical columns %d" % num_of_cols)
+            stats['num_of_numerical_columns'] += num_of_cols
+            stats['num_of_numerical_files'] += 1
+            for i in range(num_of_cols):
+                col = data_list_of_cols[i]
+                #col = data[:, i]
+                stats['total_num_of_vals_in_numerical_columns'] += len(col)
+
+    print json.dumps(stats, indent=4, sort_keys=True)
+
+
 # web_commons_transformation()
 run_experiment()
+#show_stats()

@@ -1,0 +1,11 @@
+filename,concept,k,column,notes
+68779923_2_1000046510804975562.tar.gz,Country,1,year of change,"maybe, I need to check the year deputy"
+39650055_5_7135804139753401681.tar.gz,Company,0,company value in 2006,
+90593344_0_8311455501234425088.tar.gz,Mountain,4,height/elevation ft,
+90593344_0_8311455501234425088.tar.gz,Mountain,0,height/elevation m,
+41839679_0_3009344178474568371.tar.gz,Monarch,0,no idea,"I tried to match a couple of the subjects, they are either not in dbpedia or they don't have a property that matches"
+2066887_0_746204117268168398.tar.gz,Saint,4,death data,
+37856682_0_6818907050314633217.tar.gz,AdministrativeRegion ,0,area in square miles,
+29414811_13_8724394428539174350.tar.gz,VideoGame,1,release date,
+55961337_0_6548713781034932742.tar.gz,Currency,1,ison number ,
+77632062_0_2292892375652659825.tar.gz,City,0,World rank of something that is not clear,

@@ -7,7 +7,7 @@ import logging
 import chardet
 from datetime import datetime
 from logger import set_config
-
+import pandas as pd
 
 logger = set_config(logging.getLogger(__name__))
 
@@ -26,6 +26,35 @@ logger = set_config(logging.getLogger(__name__))
 # logger.setLevel(logging.DEBUG)
 
 
+# def get_numerical_columns(data):
+#     """
+#     :param data: an np matrix
+#     :return: an np matrix of numerical columns
+#     """
+#     percentage_of_num_per_col = 0.5
+#     num_cols = []
+#     new_i = 0
+#     new_old_idx_matching = {}
+#     logger.debug("get_numerical_columns> data type: %s" % str(type(data)))
+#     logger.debug("get_numerical_columns> data shape %s" % str(data.shape))
+#     logger.debug("get_numerical_columns> the data: ")
+#     logger.debug(data)
+#     logger.debug("get_numerical_columns> shape length: %s" % len(data.shape))
+#     if len(data.shape) == 0:
+#         return [], []
+#     if len(data.shape) == 1:
+#         data = np.array([data]).T
+#     for i in range(len(data[0])):
+#         raw_col = data[:, i]
+#         col = util.get_numericals(raw_col)
+#         if len(col) > percentage_of_num_per_col * len(raw_col):
+#             num_cols.append(col)
+#             new_old_idx_matching[new_i] = i
+#             new_i += 1
+#     logger.debug("get_numerical_columns> return data: ")
+#     return np.array(num_cols).T, new_old_idx_matching
+
+
 def get_numerical_columns(data):
     """
     :param data: an np matrix
@@ -39,7 +68,7 @@ def get_numerical_columns(data):
     logger.debug("get_numerical_columns> data shape %s" % str(data.shape))
     logger.debug("get_numerical_columns> the data: ")
     logger.debug(data)
-    logger.debug("shape length: %s" % len(data.shape))
+    logger.debug("get_numerical_columns> shape length: %s" % len(data.shape))
     if len(data.shape) == 0:
         return [], []
     if len(data.shape) == 1:
@@ -51,7 +80,7 @@ def get_numerical_columns(data):
             num_cols.append(col)
             new_old_idx_matching[new_i] = i
             new_i += 1
-    return np.array(num_cols).T, new_old_idx_matching
+    return num_cols, new_old_idx_matching
 
 
 def cleanup_prediction_columns(prediction_run_model):
@@ -104,21 +133,23 @@ def predict(prediction_run_id):
     # f = open(file_dir)
     # chardet.detect(f.read())
     # raw_data = np.loadtxt(file_dir, delimiter=',', skiprows=1)
-    raw_data = np.genfromtxt(file_dir, delimiter=',', skip_header=1, invalid_raise=False)  # invalid_raise to skip rows with excessive number of files
+    #raw_data = np.genfromtxt(file_dir, delimiter=',', skip_header=1, invalid_raise=False)  # invalid_raise to skip rows with excessive number of files
+    raw_data = pd.read_csv(file_dir).values
     logger.debug("predict> asking for numerical columns")
-    data, new_old_idx_matching = get_numerical_columns(raw_data)
-    if len(data) == 0:
+    data_list_of_cols, new_old_idx_matching = get_numerical_columns(raw_data)
+    if len(data_list_of_cols) == 0:
         logger.debug("predict> no numerical data is found")
         prediction_run.status = PredictionRun.STATUS_STOPPED
         prediction_run.save()
         return
-    num_of_cols = len(data[0])
+    num_of_cols = len(data_list_of_cols)
     if num_of_cols > 0:
         logger.debug("predict> will load the MLModel")
         fcm = load_mlmodel_into_fcm(prediction_run.model)
         logger.debug("predict> number of numerical columns %d" % num_of_cols)
         for i in range(num_of_cols):
-            col = data[:, i]
+            col = data_list_of_cols[i]
+            #col = data[:, i]
             # logger.debug("num col:")
             # logger.debug(col)
             col_fea = features.compute_curr_features(col)

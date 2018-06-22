@@ -71,6 +71,9 @@ class PredictionAdd(TemplateView):
 
 
 def prediction_list(request):
+    if 'annotation_only' in request.GET:
+        predictions = [p for p in PredictionRun.objects.all() if len(p.columnprediction_set.all()) > 0]
+        return render(request, 'prediction_list.html', {'predictions': predictions})
     return render(request, 'prediction_list.html', {'predictions': PredictionRun.objects.all()})
 
 
