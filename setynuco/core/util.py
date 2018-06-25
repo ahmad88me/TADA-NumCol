@@ -41,9 +41,9 @@ def get_numericals(column):
             if not np.isnan(c):
                 clean_column.append(c)
         elif isinstance(c, basestring):
-            if '.' in c or c.isdigit():
+            if '.' in c or ',' in c or c.isdigit():
                 try:
-                    clean_column.append(float(c))
+                    clean_column.append(float(c.replace(',', '')))
                 except Exception as e:
                     pass
     return clean_column
