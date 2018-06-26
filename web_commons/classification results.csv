@@ -5,7 +5,7 @@ filename,concept,k,column,notes
 90593344_0_8311455501234425088.tar.gz,Mountain,0,height/elevation m,
 41839679_0_3009344178474568371.tar.gz,Monarch,0,no idea,"I tried to match a couple of the subjects, they are either not in dbpedia or they don't have a property that matches"
 2066887_0_746204117268168398.tar.gz,Saint,4,death data,
-37856682_0_6818907050314633217.tar.gz,AdministrativeRegionæ,0,area in square miles,
+37856682_0_6818907050314633217.tar.gz,AdministrativeRegion¾,0,area in square miles,
 29414811_13_8724394428539174350.tar.gz,VideoGame,1,release date,
 55961337_0_6548713781034932742.tar.gz,Currency,1,ison number ,
 77632062_0_2292892375652659825.tar.gz,City,0,World rank of something that is not clear,
@@ -88,4 +88,24 @@ filename,concept,k,column,notes
 39759273_0_1427898308030295194.tar.gz,Film,2,publication year,
 39759273_0_1427898308030295194.tar.gz,Film,0,IMDB rating,
 39759273_0_1427898308030295194.tar.gz,Film,1,IMDB votes,
- , ,,,
+14380604_4_3329235705746762392.tar.gz,Company,0,rank,
+14380604_4_3329235705746762392.tar.gz,Company,0,revenue,
+14380604_4_3329235705746762392.tar.gz,Company,0,profit,
+14380604_4_3329235705746762392.tar.gz,Company,0,assets,
+14380604_4_3329235705746762392.tar.gz,Company,0,market value,
+26310680_0_5150772059999313798.tar.gz,Currency,1,ios numeric code,
+29414811_2_4773219892816395776.tar.gz,VideoGame,8,year ,
+45073662_0_3179937335063201739.tar.gz,BaseballPlayer,0,rank,
+45073662_0_3179937335063201739.tar.gz,BaseballPlayer,0,Total bases,
+6869358_0_1379459120563510331.tar.gz,Novel,0,rank,Very few properties and subjects
+6869358_0_1379459120563510331.tar.gz,Novel,0,year,Very few properties and subjects
+41194422_0_7231546114369966811.tar.gz,Country,1,rank,
+41194422_0_7231546114369966811.tar.gz,Country,2,population,
+10630177_0_4831842476649004753.tar.gz,Building,0,floors,"There are a couple of players in the building class, e.g. select ?s ?o2where{?s a <http://dbpedia.org/ontology/Building>.?s <http://dbpedia.org/ontology/number> ?o2}"
+10630177_0_4831842476649004753.tar.gz,Building,0,completion year,"There are a couple of video games and people rather than buildings  e.g. select ?s ?o2where{?s a <http://dbpedia.org/ontology/Building>.?s <http://dbpedia.org/property/released> ?o2}"
+67865873_0_8259587610208037357.tar.gz,Country,2,population,
+20135078_0_7570343137119682530.tar.gz,Film,0,fans' rank,
+20135078_0_7570343137119682530.tar.gz,Film,1,yes,
+20135078_0_7570343137119682530.tar.gz,Film,0,overall rank,
+50245608_0_871275842592178099.tar.gz,Film,1,year,
+50245608_0_871275842592178099.tar.gz,Film,1,length,
