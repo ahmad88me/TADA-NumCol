@@ -9,9 +9,9 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 1146722_1_7558140036342906956.tar.gz,Mountain,0,elevation in ft,,1,1,1
 11688006_0_8123036130090004213.tar.gz,Country,2,population,,1,,
 11688006_0_8123036130090004213.tar.gz,Country,1,area sq. km,,1,,
-11688006_0_8123036130090004213.tar.gz,Country,0,population density sq. km,,1,,1
+11688006_0_8123036130090004213.tar.gz,Country,0,population density sq. km,,1,1,1
 11688006_0_8123036130090004213.tar.gz,Country,1,area sq. mi,,1,,
-11688006_0_8123036130090004213.tar.gz,Country,0,population density sq. mi,,1,,1
+11688006_0_8123036130090004213.tar.gz,Country,0,population density sq. mi,,1,0,1
 11833461_1_3811022039809817402.tar.gz,VideoGame,0,Pan European Game Information,,1,0,1
 12746760_0_6703465836620308483.tar.gz,PoliticalParty,0,funding,,1,0,1
 12746760_0_6703465836620308483.tar.gz,PoliticalParty,0,funding,,1,0,1
@@ -281,40 +281,40 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 84548468_0_5955155464119382182.tar.gz,Film,0,fans' rank,,1,0,1
 84548468_0_5955155464119382182.tar.gz,Film,3,release date,,1,,
 84548468_0_5955155464119382182.tar.gz,Film,0,overall rank,,1,0,0
-84575189_0_6365692015941409487.tar.gz,AcademicJournal,0,number of citations,,1,,
+84575189_0_6365692015941409487.tar.gz,AcademicJournal,0,number of citations,,1,0,1
 8468806_0_4382447409703007384.tar.gz,Lake,0,rang (some kind of order or sequest),,0,,
 8468806_0_4382447409703007384.tar.gz,Lake,6,area,,1,,
 8468806_0_4382447409703007384.tar.gz,Lake,0,no idea,,0,,
-8468806_0_4382447409703007384.tar.gz,Lake,0,depth,,1,,
+8468806_0_4382447409703007384.tar.gz,Lake,0,depth,,1,0,1
 86297395_0_6919201319699354263.tar.gz,Country,1,area,,1,,
 86297395_0_6919201319699354263.tar.gz,Country,2,population,,1,,
 86627271_6_2239821927452848323.tar.gz,Lake,2,area total,classified as areaOfCatchment,1,,
 86627271_6_2239821927452848323.tar.gz,Lake,2,area net,classified as areaOfCatchment,1,,
 86627271_6_2239821927452848323.tar.gz,Lake,2,altitude/ elevation,classified as height,1,,
-88353875_0_4876234304797064286.tar.gz,Mountain,0,height in m,,1,,
+88353875_0_4876234304797064286.tar.gz,Mountain,0,elevation in m,,1,1,1
 88353875_0_4876234304797064286.tar.gz,Mountain,4,height in ft,,1,,
 88732174_0_7321365014357502211.tar.gz,BaseballPlayer,1,year  ,,1,,
 88732174_0_7321365014357502211.tar.gz,BaseballPlayer,4,squad number,,1,,
-88732174_0_7321365014357502211.tar.gz,BaseballPlayer,0,war in respect to the team,,1,,
-89511064_0_2199624509082573904.tar.gz,Country,0,"iso number, this file should be currency not country",,1,,
+88732174_0_7321365014357502211.tar.gz,BaseballPlayer,0,war in respect to the team,,1,0,1
+89511064_0_2199624509082573904.tar.gz,Country,0,iso number, this file should be currency not country,1,0,1
 90593344_0_8311455501234425088.tar.gz,Mountain,4,height/elevation ft,,1,,
-90593344_0_8311455501234425088.tar.gz,Mountain,0,height/elevation m,,1,,
-90723763_0_874013697986950454.tar.gz,Company,0,rating,,1,,
-90723763_0_874013697986950454.tar.gz,Company,0,Company TCSR vs the industry (no idea what that means),,1,,
+90593344_0_8311455501234425088.tar.gz,Mountain,0,elevation m,,1,1,1
+90723763_0_874013697986950454.tar.gz,Company,0,rating,,1,0,0
+90723763_0_874013697986950454.tar.gz,Company,0,Company TCSR vs the industry (no idea what that means),,1,0,0
 91474256_0_964747655387573523.tar.gz,City,0,world rank,,0,,
 91474256_0_964747655387573523.tar.gz,City,4,city population   ,,1,,
 91474256_0_964747655387573523.tar.gz,City,2,population metro,,1,,
 91959037_0_7907661684242014480.tar.gz,VideoGame,10,reviews,,1,,
-91959037_0_7907661684242014480.tar.gz,VideoGame,0,reviews average,,1,,
-9206866_1_8114610355671172497.tar.gz,Country,0,gni,,1,,
+91959037_0_7907661684242014480.tar.gz,VideoGame,0,reviews average,,1,0,1
+9206866_1_8114610355671172497.tar.gz,Country,0,gni,,1,0,1
 9206866_1_8114610355671172497.tar.gz,Country,2,population,,1,,
-92896255_0_4593968708343548527.tar.gz,Plant,0,number of seeds,,1,,
+92896255_0_4593968708343548527.tar.gz,Plant,0,number of seeds,,1,0,1
 9475172_1_1023126399856690702.tar.gz,TelevisionShow,1,series,,1,,
 9567241_0_5666388268510912770.tar.gz,Newspaper,0,No idea,,0,,
 97941125_0_8220652154649529701.tar.gz,Currency,1,iso number,,1,,
 9834884_0_3871985887467090123.tar.gz,Museum,0,"score, no idea what kind of score",,0,,
-98458255_0_5873264818593370400.tar.gz,AcademicJournal,0,embargo period in months,,1,,
+98458255_0_5873264818593370400.tar.gz,AcademicJournal,0,embargo period in months,,1,0,1
 99070098_0_2074872741302696997.tar.gz,Mountain,4,elevation,,1,,
-99070098_0_2074872741302696997.tar.gz,Mountain,0,"it is elevation , but in meters. Eventhough there was no elevation in the top 10, the first suggested property is prominence, which is similar to elevation, but counted differently.",,1,,
+99070098_0_2074872741302696997.tar.gz,Mountain,0,"it is elevation , but in meters. Eventhough there was no elevation in the top 10, the first suggested property is prominence, which is similar to elevation, but counted differently.",,1,1,1
 99070098_0_2074872741302696997.tar.gz,Mountain,0,no idea,,0,,
-99070098_0_2074872741302696997.tar.gz,Mountain,0,number of trips,,1,,
+99070098_0_2074872741302696997.tar.gz,Mountain,0,number of trips,,1,0,1
