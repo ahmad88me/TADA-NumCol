@@ -1,5 +1,5 @@
 filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","clear(yes=1,vague=0)"
-10579449_0_1681126353774891032.tar.gz,Newspaper,0,no idea,,0,,
+10579449_0_1681126353774891032.tar.gz,Newspaper,0,no idea,,0,0,0
 10630177_0_4831842476649004753.tar.gz,Building,0,floors,"There are a couple of players in the building class, e.g. select ?s ?o2where{?s a <http://dbpedia.org/ontology/Building>.?s <http://dbpedia.org/ontology/number> ?o2}",1,1,1
 10630177_0_4831842476649004753.tar.gz,Building,0,completion year,"There are a couple of video games and people rather than buildings  e.g. select ?s ?o2where{?s a <http://dbpedia.org/ontology/Building>.?s <http://dbpedia.org/property/released> ?o2}",1,1,1
 11278409_0_3742771475298785475.tar.gz,Company,0,rank,,1,1,0
@@ -19,8 +19,8 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 13395751_3_369722706637560735.tar.gz,Lake,0,net area,"In wikipedia we only found two kinds of areas, catchment area and surface area for the given lakes",1,0,0
 13395751_3_369722706637560735.tar.gz,Lake,0,total area,"In wikipedia we only found two kinds of areas, catchment area and surface area for the given lakes",1,0,0
 13395751_3_369722706637560735.tar.gz,Lake,1,height,,1,,
-14067031_0_559833072073397908.tar.gz,Country,0,no idea,,0,,
-14067031_0_559833072073397908.tar.gz,Country,0,no idea,,0,,
+14067031_0_559833072073397908.tar.gz,Country,0,no idea,,0,0,0
+14067031_0_559833072073397908.tar.gz,Country,0,no idea,,0,0,0
 14311244_0_7604843865524657408.tar.gz,Mountain,3,elevation,,1,,
 14380604_4_3329235705746762392.tar.gz,Company,0,rank,,1,1,1
 14380604_4_3329235705746762392.tar.gz,Company,0,revenue,,1,1,1
@@ -38,7 +38,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 20135078_0_7570343137119682530.tar.gz,Film,1,yes,,1,,
 20135078_0_7570343137119682530.tar.gz,Film,0,overall rank,,1,0,0
 2066887_0_746204117268168398.tar.gz,Saint,4,death data,,1,,
-21329809_0_5526008408364682899.tar.gz,City,0,"World rank, but no idea what is this",,0,,
+21329809_0_5526008408364682899.tar.gz,City,0,"World rank, but no idea what is this",,0,0,0
 21329809_0_5526008408364682899.tar.gz,City,3,city population   ,,1,,
 21329809_0_5526008408364682899.tar.gz,City,2,population metro,,1,,
 21333456_2_1886495893795687264.tar.gz,Scientist,0,age,,1,0,1
@@ -56,13 +56,13 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 24142265_0_4577466141408796359.tar.gz,VideoGame,0,days on chart,,1,0,0
 24417511_0_3058323105166963431.tar.gz,BaseballPlayer,1,hall of fame year,,1,,
 24850757_0_5978004733768297283.tar.gz,Country,1,population,,1,,
-24850757_0_5978004733768297283.tar.gz,Country,0,no idea,,0,,
+24850757_0_5978004733768297283.tar.gz,Country,0,no idea,,0,0,0
 24850757_0_5978004733768297283.tar.gz,Country,0,population to member ratio,,1,0,1
 25404227_0_2240631045609013057.tar.gz,Film,0,rank,,1,0,0
 25404227_0_2240631045609013057.tar.gz,Film,1,release year,,1,,
 25404227_0_2240631045609013057.tar.gz,Film,0,overall rank,,1,0,0
 26270372_1_3774607938887520564.tar.gz,Monarch,5,years,,1,,
-26270372_1_3774607938887520564.tar.gz,Monarch,0,no idea,,0,,
+26270372_1_3774607938887520564.tar.gz,Monarch,0,no idea,,0,0,0
 26310680_0_5150772059999313798.tar.gz,Currency,1,ios numeric code,,1,,
 27466715_0_3913547177671701530.tar.gz,VideoGame,1,released,,1,,
 28036255_0_5705563063166785494.tar.gz,Mountain,1,elevation,,1,,
@@ -78,7 +78,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 28646774_0_3256889721737611537.tar.gz,PoliticalParty,0,funding for  2002,,1,0,1
 28646774_0_3256889721737611537.tar.gz,PoliticalParty,0,expenditure 2002,,1,0,1
 28646774_0_3256889721737611537.tar.gz,PoliticalParty,0,funding forward to 2003,,1,0,1
-28993628_1_6072768612274729703.tar.gz,Mountain,0,no idea,,0,,
+28993628_1_6072768612274729703.tar.gz,Mountain,0,no idea,,0,0,0
 28993628_1_6072768612274729703.tar.gz,Mountain,4,elevation,,1,,
 29414811_12_251152470253168163.tar.gz,VideoGame,7,release ,,1,,
 29414811_13_8724394428539174350.tar.gz,VideoGame,1,release date,,1,,
@@ -86,7 +86,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 29414811_6_8221428333921653560.tar.gz,VideoGame,2,released,,1,,
 29857217_0_961038783966485949.tar.gz,Newspaper,0,number of transactions,,1,0,1
 29857217_0_961038783966485949.tar.gz,Newspaper,0,number of journalists,,1,0,1
-29886325_0_1448173912684571475.tar.gz,City,0,world rank,,0,,
+29886325_0_1448173912684571475.tar.gz,City,0,world rank,,0,0,0
 29886325_0_1448173912684571475.tar.gz,City,5,city population   ,,1,,
 29886325_0_1448173912684571475.tar.gz,City,3,population metro,,1,,
 30166286_0_1837439231599898748.tar.gz,Scientist,0,year of earning the nobel prize in physics,,1,0,1
@@ -97,7 +97,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 32812626_0_5428724146873158593.tar.gz,Hospital,0,patient days,,1,0,1
 33242247_1_7232384061498591611.tar.gz,Election,1,number of votes,,1,,
 33242247_1_7232384061498591611.tar.gz,Election,4,numbe rof seats,,1,,
-3389822_6_374624044314151266.tar.gz,Mountain,0,no idea what is that,,0,,
+3389822_6_374624044314151266.tar.gz,Mountain,0,no idea what is that,,0,0,0
 3389822_6_374624044314151266.tar.gz,Mountain,2,elevation,,1,,
 34041816_1_4749054164534706977.tar.gz,Airport,5,number of passengers,,1,,
 34899692_0_6530393048033763438.tar.gz,Country,0,rate of the bank (of the currency),,1,0,1
@@ -105,14 +105,14 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 35188621_0_6058553107571275232.tar.gz,Film,0,Fans' rank,,1,0,1
 35188621_0_6058553107571275232.tar.gz,Film,1,Release year,,1,,
 35188621_0_6058553107571275232.tar.gz,Film,0,Overall rank,,1,0,0
-36039980_4_4283009829602711082.tar.gz,Mountain,0,"no idea, could be the prominence as it almost matched one",,0,,
+36039980_4_4283009829602711082.tar.gz,Mountain,0,"no idea, could be the prominence as it almost matched one",,0,0,0
 36039980_4_4283009829602711082.tar.gz,Mountain,4,height,,1,,
 36102169_0_7739454799295072814.tar.gz,VideoGame,0,sold in mil,,1,0,1
 37541068_1_1156932518917623732.tar.gz,BaseballPlayer,0,rank,,1,0,0
 37541068_1_1156932518917623732.tar.gz,BaseballPlayer,0,years,Only 6 objects found while the minimum was 20,1,0,1
 37541068_1_1156932518917623732.tar.gz,BaseballPlayer,5,start year,,1,,
 37541068_1_1156932518917623732.tar.gz,BaseballPlayer,2,end/final year,,1,,
-37856682_0_6818907050314633217.tar.gz,AdministrativeRegion_,0,area in square miles,,1,,
+37856682_0_6818907050314633217.tar.gz,AdministrativeRegion,0,area in square miles,exists only for square meters,1,0,1
 38428277_0_1311643810102462607.tar.gz,Film,0,fans' rank,,1,0,1
 38428277_0_1311643810102462607.tar.gz,Film,1,year,,1,,
 38428277_0_1311643810102462607.tar.gz,Film,0,overall rank,,1,0,0
@@ -151,12 +151,12 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 41648740_0_6959523681065295632.tar.gz,Country,0,Spanish exam prices,,1,0,1
 41648740_0_6959523681065295632.tar.gz,Country,0,Spanish exam prices,,1,0,1
 41819807_0_3139249984404131679.tar.gz,Lake,7,area,,1,,
-41839679_0_3009344178474568371.tar.gz,Monarch,0,no idea,"I tried to match a couple of the subjects, they are either not in dbpedia or they don't have a property that matches",0,,
-42764224_0_515744189130384109.tar.gz,PoliticalParty,0,no idea,,0,,
-42764224_0_515744189130384109.tar.gz,PoliticalParty,0,no idea,,0,,
-42764224_0_515744189130384109.tar.gz,PoliticalParty,0,no idea,,0,,
+41839679_0_3009344178474568371.tar.gz,Monarch,0,no idea,"I tried to match a couple of the subjects, they are either not in dbpedia or they don't have a property that matches",0,0,0
+42764224_0_515744189130384109.tar.gz,PoliticalParty,0,no idea,,0,0,0
+42764224_0_515744189130384109.tar.gz,PoliticalParty,0,no idea,,0,0,0
+42764224_0_515744189130384109.tar.gz,PoliticalParty,0,no idea,,0,0,0
 43237185_1_3636357855502246981.tar.gz,Scientist,0,year of PhD,the scientests in the file does not exists in wikipedia,1,0,1
-43469354_0_6029017163991310319.tar.gz,City,0,world rank,,0,,
+43469354_0_6029017163991310319.tar.gz,City,0,world rank,,0,0,0
 43469354_0_6029017163991310319.tar.gz,City,7,city population   ,,1,,
 43469354_0_6029017163991310319.tar.gz,City,4,population metro,,1,,
 44005578_0_5400481538370055338.tar.gz,PoliticalParty,0,funding,,1,0,1
@@ -165,7 +165,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 44206774_0_3810538885942465703.tar.gz,GolfPlayer,1,number of major wins,,1,,
 44206774_0_3810538885942465703.tar.gz,GolfPlayer,6,total of wins,,1,,
 44206774_0_3810538885942465703.tar.gz,GolfPlayer,0,money,,1,0,0
-4444204_0_951426790527152756.tar.gz,City,0,"World rank, but no idea what is this",,0,,
+4444204_0_951426790527152756.tar.gz,City,0,"World rank, but no idea what is this",,0,0,0
 4444204_0_951426790527152756.tar.gz,City,4,city population   ,,1,,
 4444204_0_951426790527152756.tar.gz,City,2,population metro,,1,,
 4501311_8_8306082458935575308.tar.gz,VideoGame,0,rank,,1,0,0
@@ -173,7 +173,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 45073662_0_3179937335063201739.tar.gz,BaseballPlayer,0,Total bases,,1,0,1
 45593932_0_6869375743660252130.tar.gz,Scientist,0,year of receiving the nobel prize,,1,0,1
 4730513_0_8573199053866072336.tar.gz,Scientist,0,year for the best discovery of this scientist,,1,0,1
-48944826_0_2321751364268052533.tar.gz,VideoGame,0,no idea,,0,,
+48944826_0_2321751364268052533.tar.gz,VideoGame,0,no idea,,0,0,0
 49087820_0_461228320225084868.tar.gz,Currency,1,iso number,,1,,
 49772588_0_6549847739640234347.tar.gz,Country,0,catholics,,1,0,1
 49772588_0_6549847739640234347.tar.gz,Country,2,population,,1,,
@@ -190,11 +190,11 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 50245608_0_871275842592178099.tar.gz,Film,1,length,,1,,
 50270082_0_444360818941411589.tar.gz,BaseballPlayer,0,rank,,1,0,0
 50270082_0_444360818941411589.tar.gz,BaseballPlayer,0,number of wins,,1,0,1
-52208141_2_5171684379987586712.tar.gz,Museum,0,rang (some kind of order or sequest),,0,,
+52208141_2_5171684379987586712.tar.gz,Museum,0,rang (some kind of order or sequest),,0,0,0
 52208141_2_5171684379987586712.tar.gz,Museum,0,facebook fans  ,,1,0,1
 52299421_0_4473286348258170200.tar.gz,Country,2,population,,1,,
 52299421_0_4473286348258170200.tar.gz,Country,0,infant mortality,,1,0,1
-52572391_0_8684896999787304275.tar.gz,Company,0,no idea,,0,,
+52572391_0_8684896999787304275.tar.gz,Company,0,no idea,,0,0,0
 53583534_0_503521622577229691.tar.gz,Building,0,number of floors,,1,1,1
 53822652_0_5767892317858575530.tar.gz,Film,1,released,,1,,
 53989675_0_8697482470743954630.tar.gz,Lake,1,area of catchment,,1,,
@@ -212,11 +212,11 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 56224555_0_3713922722778385817.tar.gz,Company,0,market value in bil,,1,0,1
 57938705_0_8737506792349461963.tar.gz,VideoGame,0,"pos, some kingd of sequence",,1,0,0
 57938705_0_8737506792349461963.tar.gz,VideoGame,2,production date,,1,,
-57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,"Has something related to continent, maybe sold",0,,
-57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,,
-57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,,
-57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,,
-57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,,
+57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,"Has something related to continent, maybe sold",0,0,0
+57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,0,0
+57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,0,0
+57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,0,0
+57938705_0_8737506792349461963.tar.gz,VideoGame,0,no idea,,0,0,0
 58891288_0_1117541047012405958.tar.gz,Film,0,Rank,,1,0,0
 58891288_0_1117541047012405958.tar.gz,Film,2,released,,1,,
 58891288_0_1117541047012405958.tar.gz,Film,0,overall rank,,1,0,0
@@ -230,7 +230,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 64499281_8_7181683886563136802.tar.gz,Museum,0,rang (some kind of order or sequest),,1,0,0
 64499281_8_7181683886563136802.tar.gz,Museum,0,facebook fans  ,,1,0,1
 64734047_0_5880705307495695536.tar.gz,Hospital,0,number of patients,,1,0,1
-66009064_0_9148652238372261251.tar.gz,BaseballPlayer,0,"It is a year, but I have no idea what it represents. Nonetheless it is classified as a year",,0,,
+66009064_0_9148652238372261251.tar.gz,BaseballPlayer,0,"It is a year, but I have no idea what it represents. Nonetheless it is classified as a year",,0,0,0
 66329615_0_3585856495110277641.tar.gz,VideoGame,1,released,,1,,
 67865873_0_8259587610208037357.tar.gz,Country,2,population,,1,,
 6869358_0_1379459120563510331.tar.gz,Novel,0,rank,Very few properties and subjects,1,0,0
@@ -245,27 +245,27 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 69881946_0_1105130426898457358.tar.gz,Film,0,Fans' rank,,1,0,1
 69881946_0_1105130426898457358.tar.gz,Film,1,years,,1,,
 69881946_0_1105130426898457358.tar.gz,Film,0,overall rank,,1,0,0
-70404164_0_5498195978476333642.tar.gz,City,0,world rank,,0,,
+70404164_0_5498195978476333642.tar.gz,City,0,world rank,,0,0,0
 70404164_0_5498195978476333642.tar.gz,City,4,city population   ,,1,,
 70404164_0_5498195978476333642.tar.gz,City,3,population metro,,1,,
-70883081_0_5357790421435123524.tar.gz,PoliticalParty,0,no idea,,0,,
-70883081_0_5357790421435123524.tar.gz,PoliticalParty,0,no idea,,0,,
-70883081_0_5357790421435123524.tar.gz,PoliticalParty,0,no idea,,0,,
+70883081_0_5357790421435123524.tar.gz,PoliticalParty,0,no idea,,0,0,0
+70883081_0_5357790421435123524.tar.gz,PoliticalParty,0,no idea,,0,0,0
+70883081_0_5357790421435123524.tar.gz,PoliticalParty,0,no idea,,0,0,0
 72017594_0_7055198579167316152.tar.gz,Museum,1,number of visitors 2009,,1,,
 72017594_0_7055198579167316152.tar.gz,Museum,1,number of visitors 2010,,1,,
-72017594_0_7055198579167316152.tar.gz,Museum,0,no idea,,0,,
+72017594_0_7055198579167316152.tar.gz,Museum,0,no idea,,0,0,0
 73242003_5_4847571983313033360.tar.gz,VideoGame,0,rank,,1,0,0
 73988811_0_2775758476756716904.tar.gz,Film,1,"release date, we considered first aired to be an accebtable guess ",,1,,
-75154185_0_1607627349983289012.tar.gz,City,0,"World rank, but no idea what is this",,0,,
+75154185_0_1607627349983289012.tar.gz,City,0,"World rank, but no idea what is this",,0,0,0
 75154185_0_1607627349983289012.tar.gz,City,4,city population   ,,1,,
 75154185_0_1607627349983289012.tar.gz,City,2,population metro,,1,,
 76275868_0_4528346580716713695.tar.gz,Country,2,population  ,,1,,
 76275868_0_4528346580716713695.tar.gz,Country,0,life expentency in years,,1,0,1
 76275868_0_4528346580716713695.tar.gz,Country,0,IQ level,,1,0,1
-76373906_0_6904594838446307331.tar.gz,PoliticalParty,0,I don't know,,0,,
-76373906_0_6904594838446307331.tar.gz,PoliticalParty,0,I don't know,,0,,
-76373906_0_6904594838446307331.tar.gz,PoliticalParty,0,I don't know,,0,,
-77632062_0_2292892375652659825.tar.gz,City,0,World rank of something that is not clear,,0,,
+76373906_0_6904594838446307331.tar.gz,PoliticalParty,0,I don't know,,0,0,0
+76373906_0_6904594838446307331.tar.gz,PoliticalParty,0,I don't know,,0,0,0
+76373906_0_6904594838446307331.tar.gz,PoliticalParty,0,I don't know,,0,0,0
+77632062_0_2292892375652659825.tar.gz,City,0,World rank of something that is not clear,,0,0,0
 77632062_0_2292892375652659825.tar.gz,City,4,city population   ,,1,,
 77632062_0_2292892375652659825.tar.gz,City,2,population metro,,1,,
 77694908_0_6083291340991074532.tar.gz,Film,0,Fans' rank,,1,0,1
@@ -277,14 +277,14 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 8009320_0_5507755752653817624.tar.gz,Country,1,population density,,1,,
 8009320_0_5507755752653817624.tar.gz,Country,1,area,,1,,
 8009320_0_5507755752653817624.tar.gz,Country,2,population,,1,,
-80588006_0_6965325215443683359.tar.gz,Newspaper,0,no idea,,0,,
+80588006_0_6965325215443683359.tar.gz,Newspaper,0,no idea,,0,0,0
 84548468_0_5955155464119382182.tar.gz,Film,0,fans' rank,,1,0,1
 84548468_0_5955155464119382182.tar.gz,Film,3,release date,,1,,
 84548468_0_5955155464119382182.tar.gz,Film,0,overall rank,,1,0,0
 84575189_0_6365692015941409487.tar.gz,AcademicJournal,0,number of citations,,1,0,1
-8468806_0_4382447409703007384.tar.gz,Lake,0,rang (some kind of order or sequest),,0,,
+8468806_0_4382447409703007384.tar.gz,Lake,0,rang (some kind of order or sequest),,0,0,0
 8468806_0_4382447409703007384.tar.gz,Lake,6,area,,1,,
-8468806_0_4382447409703007384.tar.gz,Lake,0,no idea,,0,,
+8468806_0_4382447409703007384.tar.gz,Lake,0,no idea,,0,0,0
 8468806_0_4382447409703007384.tar.gz,Lake,0,depth,,1,0,1
 86297395_0_6919201319699354263.tar.gz,Country,1,area,,1,,
 86297395_0_6919201319699354263.tar.gz,Country,2,population,,1,,
@@ -301,7 +301,7 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 90593344_0_8311455501234425088.tar.gz,Mountain,0,elevation m,,1,1,1
 90723763_0_874013697986950454.tar.gz,Company,0,rating,,1,0,0
 90723763_0_874013697986950454.tar.gz,Company,0,Company TCSR vs the industry (no idea what that means),,1,0,0
-91474256_0_964747655387573523.tar.gz,City,0,world rank,,0,,
+91474256_0_964747655387573523.tar.gz,City,0,world rank,,0,0,0
 91474256_0_964747655387573523.tar.gz,City,4,city population   ,,1,,
 91474256_0_964747655387573523.tar.gz,City,2,population metro,,1,,
 91959037_0_7907661684242014480.tar.gz,VideoGame,10,reviews,,1,,
@@ -310,11 +310,11 @@ filename,concept,k,column,notes,"understood(yes=1,no=0)","exists(yes=1,no=0)","c
 9206866_1_8114610355671172497.tar.gz,Country,2,population,,1,,
 92896255_0_4593968708343548527.tar.gz,Plant,0,number of seeds,,1,0,1
 9475172_1_1023126399856690702.tar.gz,TelevisionShow,1,series,,1,,
-9567241_0_5666388268510912770.tar.gz,Newspaper,0,No idea,,0,,
+9567241_0_5666388268510912770.tar.gz,Newspaper,0,No idea,,0,0,0
 97941125_0_8220652154649529701.tar.gz,Currency,1,iso number,,1,,
-9834884_0_3871985887467090123.tar.gz,Museum,0,"score, no idea what kind of score",,0,,
+9834884_0_3871985887467090123.tar.gz,Museum,0,"score, no idea what kind of score",,0,0,0
 98458255_0_5873264818593370400.tar.gz,AcademicJournal,0,embargo period in months,,1,0,1
 99070098_0_2074872741302696997.tar.gz,Mountain,4,elevation,,1,,
 99070098_0_2074872741302696997.tar.gz,Mountain,0,"it is elevation , but in meters. Eventhough there was no elevation in the top 10, the first suggested property is prominence, which is similar to elevation, but counted differently.",,1,1,1
-99070098_0_2074872741302696997.tar.gz,Mountain,0,no idea,,0,,
+99070098_0_2074872741302696997.tar.gz,Mountain,0,no idea,,0,0,0
 99070098_0_2074872741302696997.tar.gz,Mountain,0,number of trips,,1,0,1
