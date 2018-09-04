@@ -78,7 +78,7 @@
                     console.log('term: ' + request.term);
                     //return ["aaa", "bbb", "ccc"];
                     //response(["aaa", "bbb", "ccc"]);
-                    var query_url = "http://lookup.dbpedia.org/api/search/PrefixSearch?QueryClass=&MaxHits=5&QueryString=" + request.term;
+                    var query_url = "http://lookup.dbpedia.org/api/search/PrefixSearch?QueryClass=&MaxHits=15&QueryString=" + request.term;
                     console.log('query: ' + query_url);
                     $.ajax({
                         method: "GET",

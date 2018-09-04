@@ -5,8 +5,9 @@ from djangomodels import *
 
 def compute_curr_features(col):
     # features_vector = compute_features(col, [mean, std, q1, q3])
-    features_vector = compute_features(col, [mean, std])
+    #features_vector = compute_features(col, [mean, std])
     #features_vector = compute_features(col, [mean, mean])
+    features_vector = compute_features(col, [mean, median, std])
     return features_vector
 
 
@@ -20,6 +21,10 @@ def compute_features(column, ffuncs):
 
 def mean(column):
     return np.average(column)
+
+
+def median(column):
+    return np.median(column)
 
 
 def variance(column):
