@@ -21,6 +21,9 @@ def create_model(file_dir):
     for index, row in df.iterrows():
         prev_class_name = row[0]
         prev_property = row[1]
+        ff = open(out_file_dir, 'w')
+        ff.write("class, property, mean, median, std\n")
+        ff.close()
         break
 
     print "prev: "
@@ -63,6 +66,7 @@ def create_model(file_dir):
     for idx, p in enumerate(processes):
         print("#spawned: %d, #finished: %d" % (num_of_spawned, idx+1))
         p.join()
+    print("")
 
 
 def store_features(file_dir, class_name, property, values, lock):

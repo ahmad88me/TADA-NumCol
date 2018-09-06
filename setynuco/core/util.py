@@ -1,6 +1,11 @@
 import features
 import numpy as np
 
+import logging
+from logger import set_config
+
+logger = set_config(logging.getLogger(__name__))
+
 
 def round_acc(x):
     return round(x, 2)
@@ -48,6 +53,33 @@ def get_numericals(column):
                     pass
     return clean_column
 
+
+def get_numerical_columns(data):
+    """
+    :param data: an np matrix
+    :return: an np matrix of numerical columns
+    """
+    percentage_of_num_per_col = 0.5
+    num_cols = []
+    new_i = 0
+    new_old_idx_matching = {}
+    logger.debug("get_numerical_columns> data type: %s" % str(type(data)))
+    logger.debug("get_numerical_columns> data shape %s" % str(data.shape))
+    logger.debug("get_numerical_columns> the data: ")
+    logger.debug(data)
+    logger.debug("get_numerical_columns> shape length: %s" % len(data.shape))
+    if len(data.shape) == 0:
+        return [], []
+    if len(data.shape) == 1:
+        data = np.array([data]).T
+    for i in range(len(data[0])):
+        raw_col = data[:, i]
+        col = get_numericals(raw_col)
+        if len(col) > percentage_of_num_per_col * len(raw_col):
+            num_cols.append(col)
+            new_old_idx_matching[new_i] = i
+            new_i += 1
+    return num_cols, new_old_idx_matching
 
 # The below code is used to test the performance of get_numericals function
 # import timeit

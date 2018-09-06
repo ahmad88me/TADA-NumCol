@@ -124,7 +124,7 @@ STATIC_URL = '/static/'
 #UPLOAD_DIR = os.path.join(BASE_DIR, 'web_commons','data')
 UPLOAD_DIR = os.path.join(BASE_DIR, 'local_uploads')
 
-print("upload dir")
-print(UPLOAD_DIR)
+# print("upload dir")
+# print(UPLOAD_DIR)
 
 MEDIA_ROOT = UPLOAD_DIR
