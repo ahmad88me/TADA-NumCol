@@ -1,4 +1,4 @@
-
+*.hdt
 web_commons/data/*
 
 db.sqlite3*
