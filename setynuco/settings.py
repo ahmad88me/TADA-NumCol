@@ -123,7 +123,7 @@ STATIC_URL = '/static/'
 
 #UPLOAD_DIR = os.path.join(BASE_DIR, 'web_commons','data')
 UPLOAD_DIR = os.path.join(BASE_DIR, 'local_uploads')
-
+HDT_DIR = os.path.join(BASE_DIR, 'local_hdt')
 # print("upload dir")
 # print(UPLOAD_DIR)
 
