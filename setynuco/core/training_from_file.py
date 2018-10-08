@@ -1,3 +1,9 @@
+# encoding=utf8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+
 import pandas as pd
 import numpy as np
 from multiprocessing import Process, Lock
@@ -69,7 +75,7 @@ def create_model(file_dir):
     print("")
 
 
-def store_features(file_dir, class_name, property, values, lock):
+def store_features(file_dir, class_name, property_uri, values, lock):
     """
     Compute and store the features in the given file
     :param file_dir: dir of the output file
@@ -84,6 +90,6 @@ def store_features(file_dir, class_name, property, values, lock):
     # features_values = [1, 2, 3]
     lock.acquire()
     ff = open(file_dir, 'a')
-    ff.write('''"%s","%s",%s\n''' % (class_name, property, ",".join([str(round(f, ROUNDING)) for f in features_values])))
+    ff.write('''"%s","%s",%s\n''' % (class_name, property_uri, ",".join([str(round(f, ROUNDING)) for f in features_values])))
     ff.close()
     lock.release()

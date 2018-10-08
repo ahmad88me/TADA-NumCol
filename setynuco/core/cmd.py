@@ -10,6 +10,7 @@ import modeling
 import prediction
 import training_from_file
 import prediction_from_file
+import training_from_hdt
 
 # import subprocess
 # import sys
@@ -35,6 +36,7 @@ if __name__ == '__main__':
     parser.add_argument('--class_uris', action='append', nargs='*')
     parser.add_argument('--trainingfile', action='store', help='The training file that includes all classes, properties, and their values')
     parser.add_argument('--csv', action='store', help='The testing CSV file to be annotated')
+    parser.add_argument('--hdt', action='store', help='The HDT file that contains the knowledge graph(s)')
     # parser.add_argument('runid', type=int, metavar='Annotation_Run_ID', help='the id of the Annotation Run ')
     # parser.add_argument('--csvfiles', action='append', nargs='+', help='the list of csv files to be annotated')
     # parser.add_argument('--dotype', action='store_true', help='To conclude the type/class of the given csv file')
@@ -72,4 +74,9 @@ if __name__ == '__main__':
             print("Error, expecting absolute path")
         else:
             prediction_from_file.predict(csv_dir=args.csv, concepts=args.class_uris[0])
+    elif args.task == "modelfromhdt":
+        if args.hdt is None:
+            print("Error, expecting hdt file")
+        else:
+            training_from_hdt.workflow(args.hdt)
 
