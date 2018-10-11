@@ -1,4 +1,4 @@
-local_hdt/*
+#local_hdt/*
 *.hdt*
 web_commons/data/*
 
