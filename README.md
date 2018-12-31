@@ -1,5 +1,5 @@
-# setynuco
-
+# TADA-NumCol
+![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1410215.svg)
 
 ## parameters/configurations
 ### for the model
